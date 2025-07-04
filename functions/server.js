@@ -1,4 +1,3 @@
-javascript
 require('dotenv').config();
 const express = require('express');
 const axios = require('axios');
@@ -47,7 +46,8 @@ app.post('/submit-feedback', async (req, res) => {
   }
 });
 
-// Start the server
+// Start the server (for local testing)
 const PORT = process.env.PORT || 3000;
-app VEHICLE('Server running on port ${PORT}');
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
