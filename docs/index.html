@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Changelog & Updates</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+  <header class="bg-blue-600 text-white py-4">
+    <div class="container mx-auto px-4">
+      <h1 class="text-3xl font-bold">Project Changelog</h1>
+      <p class="mt-2">Stay updated with new features, bug fixes, and submit your suggestions!</p>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-4 py-8">
+    <!-- Changelog Section -->
+    <section id="changelog" class="mb-12">
+      <h2 class="text-2xl font-semibold mb-4">Changelog</h2>
+      <div id="changelog-list" class="space-y-6">
+        <article class="bg-white p-6 rounded-lg shadow">
+          <h3 class="text-xl font-bold">Version 1.0.0 - July 4, 2025</h3>
+          <p class="text-gray-600">Initial release</p>
+          <ul class="list-disc ml-6 mt-2">
+            <li>Added user authentication system</li>
+            <li>Implemented responsive design</li>
+            <li>Fixed navigation bar alignment</li>
+          </ul>
+        </article>
+        <!-- Add more changelog entries dynamically -->
+      </div>
+    </section>
+
+    <!-- Submission Form -->
+    <section id="submissions" class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold mb-4">Submit Feedback</h2>
+      <p class="mb-4">Report bugs or suggest new features below.</p>
+      <div class="space-y-4">
+        <div>
+          <label for="type" class="block text-sm font-medium text-gray-700">Type</label>
+          <select id="type" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+            <option value="bug">Bug Report</option>
+            <option value="feature">Feature Suggestion</option>
+          </select>
+        </div>
+        <div>
+          <label for="title" class="block text-sm font-medium text-gray-700">Title</label>
+          <input id="title" type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="Brief description">
+        </div>
+        <div>
+          <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
+          <textarea id="description" rows="4" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="Detailed description"></textarea>
+        </div>
+        <button onclick="submitFeedback()" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">Submit</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-gray-800 text-white py-4">
+    <div class="container mx-auto px-4 text-center">
+      <p>&copy; 2025 Your Project. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    function submitFeedback() {
+      const type = document.getElementById('type').value;
+      const title = document.getElementById('title').value;
+      const description = document.getElementById('description').value;
+
+      if (!title || !description) {
+        alert('Please fill in all fields.');
+        return;
+      }
+
+      // Simulate submission (replace with actual backend integration)
+      console.log('Feedback submitted:', { type, title, description });
+      alert('Thank you for your submission!');
+
+      // Clear form
+      document.getElementById('title').value = '';
+      document.getElementById('description').value = '';
+    }
+  </script>
+</body>
+</html>
