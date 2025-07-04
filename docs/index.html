@@ -64,24 +64,39 @@
   </footer>
 
   <script>
-    function submitFeedback() {
-      const type = document.getElementById('type').value;
-      const title = document.getElementById('title').value;
-      const description = document.getElementById('description').value;
+  async function submitFeedback() {
+    const type = document.getElementById('type').value;
+    const title = document.getElementById('title').value;
+    const description = document.getElementById('description').value;
 
-      if (!title || !description) {
-        alert('Please fill in all fields.');
-        return;
-      }
-
-      // Simulate submission (replace with actual backend integration)
-      console.log('Feedback submitted:', { type, title, description });
-      alert('Thank you for your submission!');
-
-      // Clear form
-      document.getElementById('title').value = '';
-      document.getElementById('description').value = '';
+    if (!title || !description) {
+      alert('Please fill in all fields.');
+      return;
     }
-  </script>
+
+    try {
+      const response = await fetch('https://your-backend-url/submit-feedback', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ type, title, description }),
+      });
+
+      const result = await response.json();
+      if (response.ok) {
+        alert('Thank you for your submission! Issue created.');
+        // Clear form
+        document.getElementById('title').value = '';
+        document.getElementById('description').value = '';
+      } else {
+        alert(`Error: ${result.error}`);
+      }
+    } catch (error) {
+      alert('Failed to submit feedback. Please try again later.');
+      console.error('Submission error:', error);
+    }
+  }
+</script>
 </body>
 </html>
